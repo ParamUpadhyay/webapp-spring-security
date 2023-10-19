@@ -1,5 +1,8 @@
 package com.spring.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +20,12 @@ import com.spring.security.CustomAuthenticationProvider;
 @Controller
 public class LoginController {
 
-	@Autowired
-	private CustomAuthenticationProvider authenticationProvider;
+    @Autowired
+    private CustomAuthenticationProvider authenticationProvider;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class); // Create a Logger instance
 
-	@PostMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<String> authenticateUser(@RequestBody UserBasicDetails loginRequest) {
 
         try {
@@ -30,11 +34,12 @@ public class LoginController {
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
+            LOGGER.info("Login successful for user: " + loginRequest.getEmailId()); // Log successful login
+
             return ResponseEntity.ok("Login successful");
         } catch (AuthenticationException e) {
+            LOGGER.warn("Invalid email or password for user: " + loginRequest.getEmailId()); // Log failed login attempt
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
         }
-	}
+    }
 }
-
-
