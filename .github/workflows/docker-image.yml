@@ -1,0 +1,30 @@
+name: Docker CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build Docker Mysql-image
+      run: docker build . --file Dockerfile-mysql --tag mysql-spring:$(date +%s)
+
+    - name: Build Docker Tomcat-image
+      run: docker build . --file Dockerfile-tomcat --tag tomcat-spring:$(date +%s)
+      
+    - name: Set up Docker Compose
+      uses: docker/compose-cli@v1
+      with:  
+        version: '1.29.2'
+        
+    - name: Run Docker Compose
+      run: docker compose -f docker.yml up
