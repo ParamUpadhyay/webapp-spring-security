@@ -1,0 +1,78 @@
+# Generated or Compiled Files:
+*.jar
+*.war
+*.class
+*.o
+*.obj
+
+# Ignore dependencies and package directories:
+node_modules/
+lib/
+venv/ (Python Virtual Environment)
+env/ (Python Virtual Environment)
+*.egg-info/ (Python packaging metadata)
+
+# Ignore IDE and editor specific files:
+.vscode/
+.idea/
+.eclipse/
+.project (Eclipse project file)
+.classpath (Eclipse classpath file)
+.pyc (Python compiled files)
+*.swp
+
+# Ignore logs and temporary files:
+*.log
+tmp/
+temp/
+
+# Ignore configuration files with sensitive information:
+config.ini
+.env
+
+# Operating System Files:
+.DS_Store (macOS)
+Thumbs.db (Windows)
+desktop.ini (Windows)
+.idea/ (IntelliJ IDEA project files)
+
+# Build and Temporary Files:
+
+build/
+dist/
+/target/
+.cache/
+.pytest_cache/
+.coverage
+Log and Backup Files:
+
+*.log
+*.swp (Vim swap files)
+*.bak
+*.backup
+*.orig
+
+Database Files:
+
+*.sqlite
+*.db
+
+# Environment Configuration Files:
+
+.env (for storing environment variables)
+Secrets and Sensitive Information:
+
+secrets.yml
+*.key
+*.pem
+*.crt
+*.cer
+
+# Documentation and Assets:
+
+*.pdf
+*.docx
+*.png
+*.jpg
+*.svg
+*.gif
